@@ -1,0 +1,9 @@
+sample_data_db_setup:
+  build: Dockerfile
+  image: hbpmip/sample-data-db-setup
+  pre:
+    - echo "Building hbpmip/sample-data-db-setup image"
+  post:
+    - echo "Finished building hbpmip/sample-data-db-setup image"
+  test:
+    - ./tests/test.sh
