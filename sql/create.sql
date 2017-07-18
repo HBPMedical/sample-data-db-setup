@@ -2,8 +2,7 @@ SET datestyle to 'European';
 
 CREATE TABLE MERGED_DATA
 (
-  "id" integer,
-  "dataset" varchar,
+  "id" varchar(256),
   "stress_before_test1" numeric,
   "score_test1" numeric,
   "iq" numeric,
