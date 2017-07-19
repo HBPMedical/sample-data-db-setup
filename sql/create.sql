@@ -1,8 +1,8 @@
 SET datestyle to 'European';
 
-CREATE TABLE MERGED_DATA
+CREATE TABLE SAMPLE_DATA
 (
-  "id" varchar(256),
+  "id" int,
   "stress_before_test1" numeric,
   "score_test1" numeric,
   "iq" numeric,
@@ -13,7 +13,7 @@ CREATE TABLE MERGED_DATA
   "score_math_course1" numeric,
   "score_math_course2" numeric,
 
-  CONSTRAINT pk_merged_data PRIMARY KEY (id)
+  CONSTRAINT pk_sample_data PRIMARY KEY (id)
 )
 WITH (
   OIDS=FALSE
