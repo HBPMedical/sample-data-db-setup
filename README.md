@@ -1,5 +1,5 @@
-[![CHUV](https://img.shields.io/badge/CHUV-LREN-AF4C64.svg)](https://www.unil.ch/lren/en/home.html) [![License](https://img.shields.io/badge/license-proprietary-AF4C64.svg)](https://github.com/LREN-CHUV/sample-data-db-setup/blob/master/LICENSE)
-[![build status](https://gitlab.com/hbpmip/sample-data-db-setup/badges/master/build.svg)](https://gitlab.com/hbpmip/sample-data-db-setup/commits/master)
+[![CHUV](https://img.shields.io/badge/CHUV-LREN-AF4C64.svg)](https://www.unil.ch/lren/en/home.html) [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](https://github.com/LREN-CHUV/sample-data-db-setup/blob/master/LICENSE) [![DockerHub](https://img.shields.io/badge/docker-hbpmip%2Fdata--db--setup-008bb8.svg)](https://hub.docker.com/r/hbpmip/sample-data-db-setup/) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/bb61058330e04b8196e4f991abcfbba4)](https://www.codacy.com/app/hbp-mip/sample-data-db-setup?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=LREN-CHUV/sample-data-db-setup&amp;utm_campaign=Badge_Grade)
+[![CircleCI](https://circleci.com/gh/LREN-CHUV/sample-data-db-setup.svg?style=svg)](https://circleci.com/gh/LREN-CHUV/sample-data-db-setup)
 
 
 # MIP Sample database setup
@@ -23,18 +23,18 @@ This database contains the data used for testing and debugging purposes.
 Run:
 
 ```console
-$ docker run -i -t --rm -e FLYWAY_HOST=`hostname` hbpmip/sample-meta-db-setup:0.0.0 migrate
+$ docker run -i -t --rm -e FLYWAY_HOST=`hostname` hbpmip/sample-meta-db-setup:0.1.0 migrate
 ```
 
 where the environment variables are:
 
 * FLYWAY_HOST: database host, default to 'db'.
 * FLYWAY_PORT: database port, default to 5432.
-* FLYWAY_DATABASE_NAME: name of the database or schema, default to 'meta'
+* FLYWAY_DATABASE_NAME: name of the database or schema, default to 'data'
 * FLYWAY_URL: JDBC url to the database, constructed by default from FLYWAY_DBMS, FLYWAY_HOST, FLYWAY_PORT and FLYWAY_DATABASE_NAME
 * FLYWAY_DRIVER: Fully qualified classname of the jdbc driver (autodetected by default based on flyway.url)
-* FLYWAY_USER: database user, default to 'meta'.
-* FLYWAY_PASSWORD: database password, default to 'meta'.
+* FLYWAY_USER: database user, default to 'data'.
+* FLYWAY_PASSWORD: database password, default to 'data'.
 * FLYWAY_SCHEMAS: Optional, comma-separated list of schemas managed by Flyway
 * FLYWAY_TABLE: Optional, name of Flyway's metadata table (default: schema_version)
 
