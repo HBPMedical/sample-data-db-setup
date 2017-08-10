@@ -46,6 +46,49 @@ Run: `./build.sh`
 
 Run: `./publish.sh`
 
+## Contents of dataset linreg_sample.csv
+
+Dataset generated from https://richarddmorey.shinyapps.io/test/solve.Rmd using ID number 2049324 and secret 's3Cr34'
+
+First perform the linear regression analysis with only score.math.course1 as the independent variable, then perform the linear regression analysis with both high school math courses as predictors.
+
+```
+
+Solution
+term 	estimate 	std.error 	statistic 	p.value
+(Intercept) 	1.1577 	1.7023 	0.6801 	0.4975
+score.math.course1 	1.0253 	0.0288 	35.5961 	0.0000
+
+Report (p) values for both slopes.
+Solution
+term 	estimate 	std.error 	statistic 	p.value
+(Intercept) 	-2.2264 	2.0310 	-1.0962 	0.2748
+score.math.course1 	0.2020 	0.2856 	0.7072 	0.4806
+score.math.course2 	0.8098 	0.2796 	2.8964 	0.0044
+
+Report (R^2) and adjusted (R^2).
+Solution
+	Dependent variable:
+
+	college.math
+score.math.course1 	0.202
+	(0.286)
+
+score.math.course2 	0.810***
+	(0.280)
+
+Constant 	-2.226
+	(2.031)
+
+Observations 	150
+R2 	0.901
+Adjusted R2 	0.900
+Residual Std. Error 	9.551 (df = 147)
+F Statistic 	669.368*** (df = 2; 147)
+Note: 	p<0.1; p<0.05; p<0.01
+
+```
+
 ## License
 
 Copyright (C) 2017 [LREN CHUV](https://www.unil.ch/lren/en/home.html)
