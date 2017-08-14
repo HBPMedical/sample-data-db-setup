@@ -27,10 +27,12 @@ ARG VERSION
 
 COPY --from=build-stats-env /data /data
 COPY --from=build-java-env /flyway/jars/data-db-setup.jar /flyway/jars/data-db-setup.jar
-COPY sql/create.sql /flyway/sql/V1_0__create.sql
+COPY sql/V1_0__create.sql /flyway/sql/V1_0__create.sql
 COPY docker/run.sh /
 
 RUN chmod +x /run.sh
+
+ENV DATASETS linreg_sample
 
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.name="hbpmip/sample-data-db-setup" \
