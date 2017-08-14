@@ -1,10 +1,10 @@
 # Build stage for statistics
 FROM python:3.6.1-alpine as build-stats-env
 
-COPY sql/values.csv /data/values.csv
+COPY sql/linreg_sample.csv /data/linreg_sample.csv
 
 RUN pip install --no-cache-dir csvkit==1.0.2 \
-    && csvstat /data/values.csv > /data/values.stats
+    && csvstat /data/linreg_sample.csv > /data/linreg_sample.stats
 
 # Recover the jar from the parent image
 FROM hbpmip/data-db-setup:2.1.3 as parent-image
