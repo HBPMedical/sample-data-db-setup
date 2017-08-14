@@ -4,7 +4,7 @@ services:
 
   data_db:
     image: "postgres:9.6.3-alpine"
-    container_name: "data-db"
+    container_name: "sample-data-db"
     restart: unless-stopped
     environment:
       - POSTGRES_USER=data
@@ -37,7 +37,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.check
-    container_name: "data-db-check"
+    container_name: "sample-data-db-check"
     environment:
       - HOST=db
       - PORT=5432
