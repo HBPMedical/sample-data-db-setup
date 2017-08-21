@@ -2,7 +2,7 @@
 [![CircleCI](https://circleci.com/gh/LREN-CHUV/sample-data-db-setup.svg?style=svg)](https://circleci.com/gh/LREN-CHUV/sample-data-db-setup)
 
 
-# MIP Sample database setup
+# Sample database setup
 
 Setup a database with one table containing sample data.
 
@@ -23,7 +23,7 @@ This database contains the data used for testing and debugging purposes.
 Run:
 
 ```console
-$ docker run -i -t --rm -e FLYWAY_HOST=`hostname` hbpmip/sample-meta-db-setup:0.2.0 migrate
+$ docker run -i -t --rm -e FLYWAY_HOST=`hostname` hbpmip/sample-data-db-setup:0.2.0 migrate
 ```
 
 where the environment variables are:
