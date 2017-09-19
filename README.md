@@ -38,6 +38,10 @@ where the environment variables are:
 * FLYWAY_SCHEMAS: Optional, comma-separated list of schemas managed by Flyway
 * FLYWAY_TABLE: Optional, name of Flyway's metadata table (default: schema_version)
 
+After execution, you should have:
+
+* A table named **SAMPLE_DATA** containing the values of dataset linreg_sample.csv
+
 ## Build
 
 Run: `./build.sh`
