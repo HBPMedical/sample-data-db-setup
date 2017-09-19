@@ -14,7 +14,7 @@ Run: `./build.sh`
 
 ## Introduction
 
-This project uses Flyway to manage the database migration scripts for the 'sample-data-db' database used by MIP.
+This Docker image uses Flyway to manage the database migration scripts for the 'sample-data-db' database used by MIP.
 
 This database contains the data used for testing and debugging purposes.
 
