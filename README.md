@@ -14,7 +14,7 @@ Run: `./build.sh`
 
 ## Introduction
 
-This project uses Flyway to manage the database migration scripts for the 'sample-data-db' database used by MIP.
+This Docker image uses Flyway to manage the database migration scripts for the 'sample-data-db' database used by MIP.
 
 This database contains the data used for testing and debugging purposes.
 
@@ -37,6 +37,10 @@ where the environment variables are:
 * FLYWAY_PASSWORD: database password, default to 'data'.
 * FLYWAY_SCHEMAS: Optional, comma-separated list of schemas managed by Flyway
 * FLYWAY_TABLE: Optional, name of Flyway's metadata table (default: schema_version)
+
+After execution, you should have:
+
+* A table named **SAMPLE_DATA** containing the values of dataset linreg_sample.csv
 
 ## Build
 
