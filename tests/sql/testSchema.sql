@@ -17,12 +17,12 @@ SELECT col_is_pk(  'sample_data', 'id' );
 
 SELECT has_table( 'churn' );
 
-SELECT has_column( 'churn', 'State' );
-SELECT has_column( 'churn', 'Account_Length' );
-SELECT has_column( 'churn', 'Area_Code' );
-SELECT has_column( 'churn', 'Phone' );
-SELECT has_column( 'churn', 'Intl_Plan' );
-SELECT has_column( 'churn', 'Churn' );
+SELECT has_column( 'churn', 'state' );
+SELECT has_column( 'churn', 'account_length' );
+SELECT has_column( 'churn', 'area_code' );
+SELECT has_column( 'churn', 'phone' );
+SELECT has_column( 'churn', 'intl_plan' );
+SELECT has_column( 'churn', 'churn' );
 
 -- Clean up
 SELECT * FROM finish();
