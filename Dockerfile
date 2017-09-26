@@ -1,10 +1,13 @@
 # Build stage for statistics
 FROM python:3.6.1-alpine as build-stats-env
 
-COPY sql/linreg_sample.csv /data/linreg_sample.csv
+RUN pip install --no-cache-dir csvkit==1.0.2
 
-RUN pip install --no-cache-dir csvkit==1.0.2 \
-    && csvstat /data/linreg_sample.csv > /data/linreg_sample.stats
+COPY sql/linreg_sample.csv /data/linreg_sample.csv
+COPY sql/churn.csv /data/churn.csv
+
+RUN csvstat /data/linreg_sample.csv > /data/linreg_sample.stats \
+    && csvstat /data/churn.csv > /data/churn.stats
 
 # Recover the jar from the parent image
 FROM hbpmip/data-db-setup:2.1.3 as parent-image
@@ -28,11 +31,12 @@ ARG VERSION
 COPY --from=build-stats-env /data /data
 COPY --from=build-java-env /flyway/jars/data-db-setup.jar /flyway/jars/data-db-setup.jar
 COPY sql/V1_0__create.sql /flyway/sql/V1_0__create.sql
+COPY sql/V1_1__churn.sql /flyway/sql/V1_1__churn.sql
 COPY docker/run.sh /
 
 RUN chmod +x /run.sh
 
-ENV DATASETS linreg_sample
+ENV DATASETS linreg_sample,churn
 
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.name="hbpmip/sample-data-db-setup" \
