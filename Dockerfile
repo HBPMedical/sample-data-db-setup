@@ -22,7 +22,7 @@ WORKDIR /project/src
 RUN jar uvf /flyway/jars/data-db-setup.jar -C . .
 
 # Final image
-FROM hbpmip/data-db-setup:2.1.3
+FROM hbpmip/data-db-setup:2.1.4
 
 ARG BUILD_DATE
 ARG VCS_REF
