@@ -10,7 +10,7 @@ RUN csvstat /data/linreg_sample.csv > /data/linreg_sample.stats \
     && csvstat /data/churn.csv > /data/churn.stats
 
 # Recover the jar from the parent image
-FROM hbpmip/data-db-setup:2.1.6 as parent-image
+FROM hbpmip/data-db-setup:2.1.9 as parent-image
 
 # Build stage for Java classes
 FROM maven:3.5.0-jdk-8-alpine as build-java-env
@@ -22,7 +22,7 @@ WORKDIR /project/src
 RUN jar uvf /flyway/jars/data-db-setup.jar -C . .
 
 # Final image
-FROM hbpmip/data-db-setup:2.1.6
+FROM hbpmip/data-db-setup:2.1.9
 
 ARG BUILD_DATE
 ARG VCS_REF
