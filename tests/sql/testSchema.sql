@@ -26,11 +26,11 @@ SELECT has_column( 'churn', 'churn' );
 
 SELECT has_table( 'iris' );
 
-SELECT has_column( 'iris', 'Name' );
-SELECT has_column( 'iris', 'SepalLength' );
-SELECT has_column( 'iris', 'SepalWidth' );
-SELECT has_column( 'iris', 'PetalLength' );
-SELECT has_column( 'iris', 'PetalWidth' );
+SELECT has_column( 'iris', 'name' );
+SELECT has_column( 'iris', 'sepal_length' );
+SELECT has_column( 'iris', 'sepal_width' );
+SELECT has_column( 'iris', 'petal_length' );
+SELECT has_column( 'iris', 'petal_width' );
 
 -- Clean up
 SELECT * FROM finish();
