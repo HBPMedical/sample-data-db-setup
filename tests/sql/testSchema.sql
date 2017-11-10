@@ -1,7 +1,7 @@
 BEGIN;
 
 -- Plan the tests
-SELECT plan( 17 );
+SELECT plan( 23);
 
 SELECT has_table( 'sample_data' );
 
@@ -23,6 +23,14 @@ SELECT has_column( 'churn', 'area_code' );
 SELECT has_column( 'churn', 'phone' );
 SELECT has_column( 'churn', 'intl_plan' );
 SELECT has_column( 'churn', 'churn' );
+
+SELECT has_table( 'iris' );
+
+SELECT has_column( 'iris', 'Name' );
+SELECT has_column( 'iris', 'SepalLength' );
+SELECT has_column( 'iris', 'SepalWidth' );
+SELECT has_column( 'iris', 'PetalLength' );
+SELECT has_column( 'iris', 'PetalWidth' );
 
 -- Clean up
 SELECT * FROM finish();
