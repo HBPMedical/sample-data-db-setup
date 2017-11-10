@@ -36,7 +36,7 @@ COPY sql/V1_0__create.sql /flyway/sql/V1_0__create.sql
 COPY sql/V1_1__churn.sql /flyway/sql/V1_1__churn.sql
 COPY sql/V1_2__iris.sql /flyway/sql/V1_2__iris.sql
 
-ENV IMAGE=hbpmip/sample-data-db-setup:0.3.2 \
+ENV IMAGE=hbpmip/sample-data-db-setup:0.4.0 \
     DATASETS=linreg_sample,churn,iris
 
 LABEL org.label-schema.build-date=$BUILD_DATE \
