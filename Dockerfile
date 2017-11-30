@@ -38,7 +38,7 @@ COPY sql/V1_2__iris.sql /flyway/sql/V1_2__iris.sql
 COPY sql/V1_3__dummy_ldsm.sql /flyway/sql/V1_3__dummy_ldsm.sql
 COPY sql/V1_4__dummy_federation.sql /flyway/sql/V1_4__dummy_federation.sql
 
-ENV IMAGE=hbpmip/sample-data-db-setup:0.4.0 \
+ENV IMAGE=hbpmip/sample-data-db-setup:0.4.1 \
     DATASETS=linreg_sample,churn,iris
 
 LABEL org.label-schema.build-date=$BUILD_DATE \
