@@ -18,7 +18,7 @@ RUN for f in *.csv ; do csvstat $f > ${f/.csv/.stats} ; done
 FROM hbpmip/data-db-setup:2.1.9 as parent-image
 
 # Build stage for Java classes
-FROM maven:3.5.0-jdk-8-alpine as build-java-env
+FROM maven:3.5.2-jdk-8-alpine as build-java-env
 
 COPY --from=parent-image /usr/share/jars/data-db-setup.jar /flyway/jars/
 COPY src/main/java/ /project/src/
