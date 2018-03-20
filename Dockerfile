@@ -43,7 +43,7 @@ COPY sql/V1_0__create.sql \
      sql/V1_5__synthetic_datasets.sql \
        /flyway/sql/
 
-ENV IMAGE=hbpmip/sample-data-db-setup:0.5.0 \
+ENV IMAGE=hbpmip/sample-data-db-setup:0.5.1 \
     DATASETS=linreg_sample,churn,iris,desd_synth,nida_synth,qqni_synth
 
 LABEL org.label-schema.build-date=$BUILD_DATE \
