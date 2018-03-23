@@ -41,10 +41,11 @@ COPY sql/V1_0__create.sql \
      sql/V1_3__dummy_ldsm.sql \
      sql/V1_4__dummy_federation.sql \
      sql/V1_5__synthetic_datasets.sql \
+     sql/V1_6__mixed_datasets.sql \
        /flyway/sql/
 
 ENV IMAGE=hbpmip/sample-data-db-setup:0.5.1 \
-    DATASETS=linreg_sample,churn,iris,desd_synth,nida_synth,qqni_synth
+    DATASETS=linreg_sample,churn,iris,desd_synth,nida_synth,qqni_synth,desd_mixed,nida_mixed,qqni_mixed
 
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.name="hbpmip/sample-data-db-setup" \
