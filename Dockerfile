@@ -44,7 +44,7 @@ COPY sql/V1_0__create.sql \
      sql/V1_6__mixed_datasets.sql \
        /flyway/sql/
 
-ENV IMAGE=hbpmip/sample-data-db-setup:0.6.0 \
+ENV IMAGE=hbpmip/sample-data-db-setup:0.6.1 \
     DATASETS=linreg_sample,churn,iris,desd_synth,nida_synth,qqni_synth,desd_mixed,nida_mixed,qqni_mixed
 
 LABEL org.label-schema.build-date=$BUILD_DATE \
