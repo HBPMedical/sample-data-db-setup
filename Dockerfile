@@ -15,7 +15,7 @@ WORKDIR /data
 RUN for f in *.csv ; do csvstat $f > ${f/.csv/.stats} ; done
 
 # Recover the jar from the parent image
-FROM hbpmip/data-db-setup:2.2.0 as parent-image
+FROM hbpmip/data-db-setup:2.3.0 as parent-image
 
 # Build stage for Java classes
 FROM maven:3.5.2-jdk-8-alpine as build-java-env
@@ -27,7 +27,7 @@ WORKDIR /project/src
 RUN jar uvf /flyway/jars/data-db-setup.jar -C . .
 
 # Final image
-FROM hbpmip/data-db-setup:2.2.0
+FROM hbpmip/data-db-setup:2.3.0
 
 ARG BUILD_DATE
 ARG VCS_REF
