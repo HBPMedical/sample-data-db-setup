@@ -23,7 +23,7 @@ This database contains the data used for testing and debugging purposes.
 Run:
 
 ```console
-$ docker run -i -t --rm -e FLYWAY_HOST=`hostname` hbpmip/sample-data-db-setup:0.6.1 migrate
+$ docker run -i -t --rm -e FLYWAY_HOST=`hostname` hbpmip/sample-data-db-setup:0.6.2 migrate
 ```
 
 where the environment variables are:
