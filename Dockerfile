@@ -1,29 +1,34 @@
-# Build stage for statistics
-FROM python:3.6.1-alpine as build-stats-env
+# Build stage for quality control
+FROM python:3.6.1-alpine as data-qc-env
 
-RUN pip install --no-cache-dir csvkit==1.0.2
+RUN apk add --no-cache python3-dev build-base
+RUN pip3 install --no-cache-dir goodtables csvkit==1.0.2
 
-COPY sql/linreg_sample.csv /data/linreg_sample.csv
-COPY sql/churn.csv \
-     sql/iris.csv \
-     sql/desd-synthdata.csv \
-     sql/nida-synthdata.csv \
-     sql/qqni-synthdata.csv \
-       /data/
-
+COPY data/ data/
 WORKDIR /data
-RUN for f in *.csv ; do csvstat $f > ${f/.csv/.stats} ; done
+
+# Produce a validation report, plus a readable report if there is an error
+
+RUN goodtables validate -o datapackage.checks --json datapackage.json || goodtables validate datapackage.json
+RUN test $(grep -c "loading error" datapackage.checks) -eq 0
+
+RUN csvstat churn.csv | tee churn.stats
+RUN csvstat desd-synthdata.csv | tee desd-synthdata.stats
+RUN csvstat iris.csv | tee iris.stats
+RUN csvstat linreg_sample.csv | tee linreg_sample.stats
+RUN csvstat nida-synthdata.csv | tee nida-synthdata.stats
+RUN csvstat qqni-synthdata.csv | tee qqni-synthdata.stats
 
 # Final image
-FROM hbpmip/data-db-setup:2.4.0
+FROM hbpmip/data-db-setup:2.5.5
 
 ARG BUILD_DATE
 ARG VCS_REF
 ARG VERSION
 
-COPY --from=build-stats-env /data /data
-COPY config/ /flyway/config/
-COPY sql/V1_0__create.sql \
+COPY --from=data-qc-env /data/*.stats /data/*.checks /data/
+COPY data/ /data/
+COPY data/V1_0__create.sql \
      sql/V1_1__churn.sql \
      sql/V1_2__iris.sql \
      sql/V1_3__dummy_ldsm.sql \
