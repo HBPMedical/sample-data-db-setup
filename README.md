@@ -40,7 +40,14 @@ where the environment variables are:
 
 After execution, you should have:
 
-* A table named **SAMPLE_DATA** containing the values of dataset linreg_sample.csv
+* A table named **SAMPLE_DATA** containing the values of dataset linreg_sample coming from file linreg_sample.csv
+* A table named **CHURN** containing the values of dataset churn coming from file churn.csv
+* A table named **IRIS** containing the values of dataset iris coming from file iris.csv
+* A table named **SAMPLE_DATA** containing the values of dataset linreg_sample coming from file linreg_sample.csv
+* A table named **cde_features_A** containing the values of datasets desd-synthdata coming from file desd-synthdata.csv
+* A table named **cde_features_B** containing the values of datasets nida-synthdata coming from file nida-synthdata.csv
+* A table named **cde_features_C** containing the values of datasets qqni-synthdata coming from file qqni-synthdata.csv
+* A table named **cde_features_mixed** containing the values of datasets desd-synthdata, nida-synthdata, qqni-synthdata coming from file desd-synthdata.csv, nida-synthdata.csv and qqni-synthdata.csv respectively
 
 ## Build
 
