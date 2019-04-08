@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 services:
 
@@ -7,28 +7,28 @@ services:
     container_name: "sample-data-db"
     restart: unless-stopped
     environment:
-      - POSTGRES_USER=data
-      - POSTGRES_PASSWORD=data
+      POSTGRES_USER: data
+      POSTGRES_PASSWORD: data
 
   wait_dbs:
     image: "waisbrot/wait"
     links:
       - "data_db:data_db"
     environment:
-      - TARGETS=data_db:5432
-      - TIMEOUT=60
+      TARGETS: data_db:5432
+      TIMEOUT: 60
 
   # Use the latest image built as this is what is under test
   data_db_setup:
     image: "hbpmip/sample-data-db-setup:latest"
     container_name: "sample-data-db-setup"
     environment:
-      - FLYWAY_DBMS=postgresql
-      - FLYWAY_HOST=db
-      - FLYWAY_PORT=5432
-      - FLYWAY_DATABASE_NAME=data
-      - FLYWAY_USER=data
-      - FLYWAY_PASSWORD=data
+      FLYWAY_DBMS: postgresql
+      FLYWAY_HOST: db
+      FLYWAY_PORT: 5432
+      FLYWAY_DATABASE_NAME: data
+      FLYWAY_USER: data
+      FLYWAY_PASSWORD: data
     links:
      - "data_db:db"
 
@@ -39,10 +39,10 @@ services:
       dockerfile: Dockerfile.check
     container_name: "sample-data-db-check"
     environment:
-      - HOST=db
-      - PORT=5432
-      - DATABASE=data
-      - USER=data
-      - PASSWORD=data
+      HOST: db
+      PORT: 5432
+      DATABASE: data
+      USER: data
+      PASSWORD: data
     links:
       - "data_db:db"

@@ -4,7 +4,7 @@ FROM python:3.6.1-alpine as data-qc-env
 RUN apk add --no-cache python3-dev build-base
 RUN pip3 install --no-cache-dir goodtables csvkit==1.0.2
 
-COPY data/ data/
+COPY data/ /data/
 WORKDIR /data
 
 # Produce a validation report, plus a readable report if there is an error
@@ -20,29 +20,30 @@ RUN csvstat nida-synthdata.csv | tee nida-synthdata.stats
 RUN csvstat qqni-synthdata.csv | tee qqni-synthdata.stats
 
 # Final image
-FROM hbpmip/data-db-setup:2.5.5
-
-ARG BUILD_DATE
-ARG VCS_REF
-ARG VERSION
+FROM hbpmip/data-db-setup:2.6.1
 
 COPY --from=data-qc-env /data/*.stats /data/*.checks /data/
 COPY data/ /data/
-COPY data/V1_0__create.sql \
+COPY sql/V1_0__create.sql \
      sql/V1_1__churn.sql \
      sql/V1_2__iris.sql \
      sql/V1_3__dummy_ldsm.sql \
      sql/V1_4__dummy_federation.sql \
      sql/V1_5__synthetic_datasets.sql \
      sql/V1_6__mixed_datasets.sql \
+     sql/V1_7__cde_upgrades.sql \
        /flyway/sql/
 
-ENV IMAGE=hbpmip/sample-data-db-setup:0.6.2 \
-    DATASETS=linreg_sample,churn,iris,desd_synth,nida_synth,qqni_synth,desd_mixed,nida_mixed,qqni_mixed
+ARG BUILD_DATE
+ARG VCS_REF
+ARG VERSION
+
+ENV IMAGE=hbpmip/sample-data-db-setup:$VERSION \
+    DATAPACKAGE=/data/datapackage.json
 
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.name="hbpmip/sample-data-db-setup" \
-      org.label-schema.description="Research database setup usin/home/hbpuserg the MIP Common Data Elements" \
+      org.label-schema.description="Research database setup using the MIP Common Data Elements" \
       org.label-schema.url="https://github.com/LREN-CHUV/sample-data-db-setup" \
       org.label-schema.vcs-type="git" \
       org.label-schema.vcs-url="https://github.com/LREN-CHUV/sample-data-db-setup" \
