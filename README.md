@@ -47,7 +47,7 @@ After execution, you should have:
 * A table named **cde_features_A** containing the values of datasets desd-synthdata coming from file desd-synthdata.csv
 * A table named **cde_features_B** containing the values of datasets nida-synthdata coming from file nida-synthdata.csv
 * A table named **cde_features_C** containing the values of datasets qqni-synthdata coming from file qqni-synthdata.csv
-* A table named **cde_features_mixed** containing the values of datasets desd-synthdata, nida-synthdata, qqni-synthdata coming from file desd-synthdata.csv, nida-synthdata.csv and qqni-synthdata.csv respectively
+* A table named **mip_cde_features** containing the values of datasets desd-synthdata, nida-synthdata, qqni-synthdata coming from file desd-synthdata.csv, nida-synthdata.csv and qqni-synthdata.csv respectively
 
 ## Build
 
